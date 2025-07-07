@@ -1,16 +1,19 @@
-# RDS Backup Script
+# 🔐 RDS Backup Utility (Bash + AWS)
 
-This project contains a Bash script to automate the backup of an AWS RDS MySQL database. It compresses the dump, uploads it to an S3 bucket, and deletes old backups older than 2 days.
+This utility automates the backup of an AWS RDS MySQL database. It:
 
-## Prerequisites
+- Creates a database dump using `mysqldump`
+- Compresses the backup file
+- Uploads it to a specified S3 bucket
+- Deletes old backups older than 2 days
 
-- AWS CLI configured with proper permissions
-- MySQL client tools installed (`mysqldump`)
-- An existing RDS MySQL database
-- An S3 bucket created to store backups with 2 days backup
-## Setup
+---
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/rds-backup-project.git
-   cd rds-backup-project
+## ✅ Prerequisites
+
+- ✅ AWS EC2 instance (Amazon Linux or Ubuntu)
+- ✅ RDS MySQL database
+- ✅ S3 bucket to store the backups
+- ✅ IAM Role attached to the EC2 instance with S3 access (see below)
+- ✅ MySQL client tools installed (`mysqldump`)
+- ✅ AWS CLI installed
