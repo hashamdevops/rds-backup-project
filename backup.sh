@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# ==== CONFIGURATION ====
-DB_HOST="hashamdb.cmh20i6o0ayj.us-east-1.rds.amazonaws.com"
-DB_USER="admin"
-DB_PASS="gym0347*"
-DB_NAME="hashambackupdb"
-S3_BUCKET="hasham-bucket"
-BACKUP_PATH="/home/ubuntu/db_backups"
+# ==== LOAD ENVIRONMENT VARIABLES ====
+if [ -f .env ]; then
+  export $(cat .env | xargs)
+else
+  echo ".env file not found!"
+  exit 1
+fi
 
 # ==== CREATE BACKUP DIRECTORY IF NOT EXISTS ====
 mkdir -p "$BACKUP_PATH"
@@ -46,4 +46,4 @@ aws s3 ls s3://"$S3_BUCKET"/ | while read -r line; do
     fi
 done
 
-echo "Backup completed successfully!"
+echo "✅ Backup completed successfully!"
